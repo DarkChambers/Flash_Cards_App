@@ -14,7 +14,7 @@ class DeckList extends React.Component {
               <View key={deck}>
                 <Text>{title}</Text>
                 <Text>{questions.length}</Text>
-                <Button onPress={()=>this.props.navigation.navigate('DeckView')}
+                <Button onPress={()=>this.props.navigation.navigate('DeckView', {entryId:deck})}
                 title='voir le deck'></Button>
               </View>
             )
@@ -34,4 +34,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+DeckList.navigationOptions = {
+  title: 'Liste des decks',
+};
 export default DeckList

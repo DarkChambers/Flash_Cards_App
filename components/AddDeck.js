@@ -37,4 +37,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 })
+
+AddDeck.navigationOptions = {
+    title: 'Ajouter un Deck',
+  };
 export default AddDeck

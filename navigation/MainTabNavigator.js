@@ -9,18 +9,19 @@ import DeckView from '../components/DeckView';
 
 const config = Platform.select({
   web: { headerMode: 'null' },
-  default: { headerMode: 'null' },
+  default: { headerMode: 'screen' },
 });
 
-// have to add route for link inside the views
+//have to add route for link inside the views
 const DeckListStack = createStackNavigator(
   {
     DeckList: DeckList,
-    DeckView: DeckView
-    
+    DeckView: DeckView,
   },
   config
 );
+
+
 
 DeckListStack.navigationOptions = {
   tabBarLabel: 'Liste des Decks',
@@ -48,9 +49,11 @@ AddDeckStack.path = '';
 const tabNavigator = createBottomTabNavigator({
   DeckListStack,
   AddDeckStack,
+  
+  
 }, {
   tabBarOptions: {
-    activeTintColor: 'purple',
+    activeTintColor: 'blue',
     labelStyle: {
       fontSize: 12,
     },
@@ -63,3 +66,18 @@ const tabNavigator = createBottomTabNavigator({
 tabNavigator.path = '';
 
 export default tabNavigator;
+// const Tabs = createBottomTabNavigator({
+//   Home: {
+//     screen: DeckList,
+//     navigationOptions: ({ navigation }) => ({
+//       tabBarLabel: "Home",
+//       title: "Tahiry",
+//       tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
+//           })
+//   }
+//   },);
+
+//   export default createStackNavigator({
+//     tabs: Tabs,
+    
+//})
