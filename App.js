@@ -3,7 +3,8 @@ import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons,FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { purple, white } from './utils/colors'
 
 import AppNavigator from './navigation/AppNavigator';
 
