@@ -3,21 +3,21 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import { Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { purple, white } from '../utils/colors'
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import DeckList from '../components/DeckList';
-import AddDeck from '../components/AddDeck'
+import AddDeck from '../components/AddDeck';
+import DeckView from '../components/DeckView';
 
 const config = Platform.select({
   web: { headerMode: 'null' },
   default: { headerMode: 'null' },
 });
 
+// have to add route for link inside the views
 const DeckListStack = createStackNavigator(
   {
     DeckList: DeckList,
+    DeckView: DeckView
+    
   },
   config
 );
@@ -43,39 +43,6 @@ AddDeckStack.navigationOptions = {
 }
 
 AddDeckStack.path = '';
-
-const LinksStack = createStackNavigator(
-  {
-    Links: LinksScreen,
-  },
-  config
-);
-
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-  ),
-
-};
-
-LinksStack.path = '';
-
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen,
-  },
-  config
-);
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  ),
-};
-
-SettingsStack.path = '';
 
 
 const tabNavigator = createBottomTabNavigator({

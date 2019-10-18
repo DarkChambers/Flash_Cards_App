@@ -7,7 +7,7 @@ class DeckList extends React.Component {
     const decks = getData()
     return (
       <View style={styles.container}>
-        {/* {
+        {
           Object.keys(decks).map((deck) => {
             const { title, questions } = decks[deck]
             return (
@@ -19,9 +19,9 @@ class DeckList extends React.Component {
               </View>
             )
           })
-        } */}
-        <Button onPress={()=>this.props.navigation.navigate('DeckView')}
-                title='voir le deck'></Button>
+        }
+        {/* <Button onPress={()=>this.props.navigation.navigate('AddDeck')}
+                title='voir le deck'></Button> */}
       </View>
     )
   }
