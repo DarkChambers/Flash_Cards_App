@@ -4,7 +4,8 @@ import * as Font from 'expo-font';
 import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons,FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
-import { purple, white } from './utils/colors'
+//import DeckView from './components/DeckView';
+import DeckList from './components/DeckList';
 
 import AppNavigator from './navigation/AppNavigator';
 

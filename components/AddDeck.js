@@ -17,7 +17,7 @@ class AddDeck extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Quel est le nom du nouveau deck</Text>
+                <Text>Quel est le nom du nouveau deck ?</Text>
                 {/* get the value from input and set the state */}
                 <TextInput onChangeText={(text) => this.setState({ text: text })}
                     value={this.state.text}>
