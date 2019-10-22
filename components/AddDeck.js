@@ -23,7 +23,7 @@ class AddDeck extends React.Component {
                     value={this.state.text}>
                 </TextInput>
                 <Button onPress={this.submitName}
-                    title='submit'>
+                    title='Ajouter un deck'>
                 </Button>
             </View>
         )

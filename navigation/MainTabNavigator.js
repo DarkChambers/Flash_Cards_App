@@ -1,8 +1,8 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import { Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
-import { purple, white } from '../utils/colors'
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { white } from '../utils/colors'
 import DeckList from '../components/DeckList';
 import AddDeck from '../components/AddDeck';
 import DeckView from '../components/DeckView';
@@ -21,8 +21,6 @@ const DeckListStack = createStackNavigator(
   config
 );
 
-
-
 DeckListStack.navigationOptions = {
   tabBarLabel: 'Liste des Decks',
   tabBarIcon: ({ tintColor }) => <MaterialCommunityIcons name='cards' size={30} color={tintColor} />
@@ -34,12 +32,13 @@ DeckListStack.path = '';
 const AddDeckStack = createStackNavigator(
   {
     AddDeck: AddDeck,
+    DeckView: DeckView,
   },
   config
 );
 
 AddDeckStack.navigationOptions = {
-  tabBarLabel: 'Ajouter une deck',
+  tabBarLabel: 'Ajouter un deck',
   tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
 }
 

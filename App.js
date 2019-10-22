@@ -5,10 +5,16 @@ import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons,FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
+import { Provider} from 'react-redux'
+import reducer from './reducers'
+import {createStore} from 'redux'
+
 
 import AppNavigator from './navigation/AppNavigator';
 
 export default function App(props) {
+
+  
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
   if (!isLoadingComplete && !props.skipLoadingScreen) {
@@ -21,10 +27,13 @@ export default function App(props) {
     );
   } else {
     return (
+      // provider component, give access to dispatch and map state props to any component wrapped in . Redux will hold the data and the state for the application
+      <Provider store={createStore(reducer)}>
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         <AppNavigator />
       </View>
+      </Provider>
     );
   }
 }

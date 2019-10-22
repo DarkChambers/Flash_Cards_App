@@ -1,27 +1,43 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { getData } from '../utils/api';
+import { connect } from 'react-redux'
+import { getDecks } from '../utils/api'
+import {receiveDecks} from '../actions'
+
 
 class DeckList extends React.Component {
+
+  componentWillMount(){
+  getDecks().then(decks=>this.props.receiveAllDecks(decks))
+  
+  console.log("willMount")
+  
+}
+
   render() {
-    const decks = getData()
+    const { decks } = this.props
+    console.log("render()")
+    console.log(decks)
+    
     return (
       <View style={styles.container}>
         {
+          // 
           Object.keys(decks).map((deck) => {
             const { title, questions } = decks[deck]
             return (
               <View key={deck}>
                 <Text>{title}</Text>
                 <Text>{questions.length}</Text>
-                <Button onPress={()=>this.props.navigation.navigate('DeckView', {entryId:deck})}
+                {/* access method from navigation and pass parameters  */}
+                <Button onPress={()=>this.props.navigation.navigate('DeckView', {entryId:title})}
                 title='voir le deck'></Button>
               </View>
             )
           })
         }
-        {/* <Button onPress={()=>this.props.navigation.navigate('AddDeck')}
-                title='voir le deck'></Button> */}
+ 
       </View>
     )
   }
@@ -35,7 +51,21 @@ const styles = StyleSheet.create({
   },
 });
 
+function mapStateToProps(decks){
+  console.log("mapStateToProps")
+  return {decks}
+}
+function mapDispatchToProps(dispatch){
+  console.log("mapDispatchToProps")
+  return{
+    receiveAllDecks: (decks)=>dispatch(receiveDecks(decks))
+  }
+}
+
+
 DeckList.navigationOptions = {
   title: 'Liste des decks',
 };
-export default DeckList
+
+//use connect to connect the component to the store
+export default connect(mapStateToProps , mapDispatchToProps)(DeckList)

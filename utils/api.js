@@ -1,3 +1,6 @@
+import { AsyncStorage } from 'react-native'
+//key to use AsyncStorage
+const FLASHCARDS_STORAGE_KEY = 'flashcards: decks'
 const initialData = {
     Geography: {
         title: 'Geography',
@@ -31,13 +34,30 @@ const initialData = {
     }
 }
 
-export const getData=()=>initialData
+export const getData = () => initialData
 
-export function saveDeckTitle(title){
-    return AsyncStorage.getItem(FLASHCARD_STORAGE_KEY, JSON.stringify({
-[title]:{
-    title: title,
-    questions:[]
+export async function getDecks(deck) {
+    
+    const results = await AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY)
+    
+    if (results === null) {
+        AsyncStorage.setItem(FLASHCARDS_STORAGE_KEY, JSON.stringify(initialData));
+        console.log("initialData")
+            return initialData;
+           
+    }
+    else {
+        console.log("return parsing data");
+        return JSON.parse(results);
+        
+    }
 }
+
+export function saveDeckTitle(title) {
+    return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY, JSON.stringify({
+        [title]: {
+            title: title,
+            questions: []
+        }
     }))
 }
