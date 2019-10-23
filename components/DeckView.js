@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { getData } from '../utils/api';
 import { connect } from 'react-redux'
+import ActionButton from './ActionButton'
+import { purple, white, orange} from '../utils/colors'
 
 class DeckView extends React.Component {
 
@@ -16,6 +18,8 @@ class DeckView extends React.Component {
       <View style={styles.container}>
         <Text>{decks[deck].title}</Text>
         <Text>{decks[deck].questions.length}</Text>
+        <ActionButton styles={styles} color={purple} text={'ajouter une carte'} onPress={()=>this.props.navigation.navigate('AddCard', {entryId:deck})}/>
+        <ActionButton styles={styles} color={orange} text={'Démarrer le Quiz'} onPress={()=>this.props.navigation.navigate('Quiz', {entryId:deck})}/>
       </View>
     )
   }
@@ -26,6 +30,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  androidBtn :{
+  padding :10,
+  borderRadius :8,
+  height : 90, 
+  margin : 5,
+  width : 200
+},
+submitBtnText:{
+  color : "#fff",
+  fontSize : 30,
+  textAlign : 'center'
+}
 });
 function mapStateToProps(decks){
   return {
