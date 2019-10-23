@@ -54,7 +54,7 @@ export async function getDecks(deck) {
 }
 // receive the new title that will be name of the object
 export function saveDeckTitle(title) {
-    return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY, JSON.stringify({
+    return AsyncStorage.mergeItem(FLASHCARDS_STORAGE_KEY, JSON.stringify({
         [title]: {
             title: title,
             questions: []
