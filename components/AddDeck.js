@@ -29,9 +29,7 @@ class AddDeck extends React.Component {
                 <TouchableHighlight
           style={styles.submitBtn}
           onPress={this.submitName}>
-          <Text
-            style={styles.text}
-            >Ajouter un deck</Text>
+          <Text>Ajouter un deck</Text>
         </TouchableHighlight>
                 
             </View>

@@ -6,6 +6,7 @@ import { white } from '../utils/colors'
 import DeckList from '../components/DeckList';
 import AddDeck from '../components/AddDeck';
 import DeckView from '../components/DeckView';
+import AddCard from '../components/AddCard';
 
 const config = Platform.select({
   web: { headerMode: 'null' },
@@ -17,6 +18,7 @@ const DeckListStack = createStackNavigator(
   {
     DeckList: DeckList,
     DeckView: DeckView,
+    AddCard : AddCard
   },
   config
 );

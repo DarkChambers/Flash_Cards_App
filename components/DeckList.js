@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableHighlight } from 'react-native';
 import { getData } from '../utils/api';
 import { connect } from 'react-redux'
 import { getDecks } from '../utils/api'
@@ -31,14 +31,13 @@ class DeckList extends React.Component {
                 <Text>{title}</Text>
                 <Text>{questions.length}</Text>
                 {/* access method from navigation and pass parameters  */}
-                <Button onPress={()=>this.props.navigation.navigate('DeckView', {entryId:title})}
-                title='voir le deck'></Button>
+                <TouchableHighlight style={styles.submitBtn} onPress={()=>this.props.navigation.navigate('DeckView', {entryId:title})}>
+                  <Text>voir le deck</Text></TouchableHighlight>
               </View>
             )
           })
         }
- 
-      </View>
+       </View>
     )
   }
 }
@@ -48,7 +47,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },submitBtn: {
+    borderWidth: 0.5,
+    borderColor: "#d6d7da",
+    padding: 10,
+    borderRadius: 7,
+    overflow: 'hidden'
+}
 });
 
 function mapStateToProps(decks){

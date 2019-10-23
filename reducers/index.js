@@ -1,4 +1,4 @@
-import { ADD_DECK, RECEIVE_DECKS, ADD_CARD_TO_DECK } from '../actions/index'
+import { ADD_DECK, RECEIVE_DECKS, ADD_CARD_TO_DECK, REMOVE_DECK } from '../actions/index'
 
 function deck(state = {}, action) {
     //return a new version of the state
