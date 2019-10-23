@@ -8,7 +8,7 @@ export function addDeck(deck) {
         type: ADD_DECK,
         deck
     }
-    
+  
 }
 
 export function receiveDecks(decks) {
@@ -16,7 +16,7 @@ export function receiveDecks(decks) {
         type: RECEIVE_DECKS,
         decks
     }
-    
+ 
 }
 
 export function addCard(card) {
@@ -24,5 +24,5 @@ export function addCard(card) {
         type: ADD_CARD_TO_DECK,
         card
     }
-    
+   
 }

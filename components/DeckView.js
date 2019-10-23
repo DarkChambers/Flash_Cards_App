@@ -1,13 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { getData } from '../utils/api';
+import { connect } from 'react-redux'
 
 class DeckView extends React.Component{
    
     render(){
       // get pass parameter form parent
         const deck = this.props.navigation.state.params.entryId
-        const decks = getData()
+      //get the decks pool data from the store
+        const {decks} = this.props
         
         console.log(deck)
         return(
@@ -29,5 +31,5 @@ const styles = StyleSheet.create({
   DeckView.navigationOptions = {
     title: 'Détail du deck',
   };
-  
-export default DeckView
+//use connect to connect the component to the store,component will receive data and callback functions as props 
+export default connect()(DeckView)

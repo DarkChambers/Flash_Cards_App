@@ -67,5 +67,5 @@ DeckList.navigationOptions = {
   title: 'Liste des decks',
 };
 
-//use connect to connect the component to the store
+//use connect to connect the component to the store,component will receive data and callback functions as props
 export default connect(mapStateToProps , mapDispatchToProps)(DeckList)
